@@ -1,0 +1,27 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+
+  text-align: center;
+
+  background: rgb(17, 17, 17);
+
+  scrollbar-width: thin;          
+  scrollbar-color: transparent transparent; 
+  -ms-overflow-style: none;       
+  overflow-y: scroll;            
+}
+
+#root::-webkit-scrollbar {
+  width: 6px;
+  background: transparent;
+}
+
+#root::-webkit-scrollbar-thumb {
+  background: transparent; 
+  border-radius: 3px;
+}
+
+#root::-webkit-scrollbar-track {
+  background: transparent;
+}

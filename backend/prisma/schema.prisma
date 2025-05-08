@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+
+  reservations reservations[]
+}
+
+model parking_spots {
+  id       String @id
+  location String
+
+  reservations reservations[]
+}
+
+model reservations {
+  id                  String             @id @default(uuid())
+  user_id             String
+  parking_spot_number String
+  reserved_date       DateTime
+  reserved_time       String
+  status              reservation_status
+
+  users         users        @relation(fields: [user_id], references: [id])
+  parking_spots parking_spots @relation(fields: [parking_spot_number], references: [id])
+}
+
+enum reservation_status {
+  booked
+  cancelled
+}
